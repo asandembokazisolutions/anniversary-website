@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back Home</a>
+    
+    <div class="container special-message-page">
+        <div class="page-header">
+            <h1 class="typing-text" id="pageTitle"></h1>
+        </div>
+
+        <div class="special-message-content">
+            <div class="message-box">
+                <div class="sparkles">✨✨✨</div>
+                
+                <div class="main-message">
+                    <p class="typing-text large-text" id="mainMsg"></p>
+                </div>
+
+                <div class="message-paragraphs">
+                    <p class="typing-text" id="msg1"></p>
+                    <p class="typing-text" id="msg2"></p>
+                    <p class="typing-text" id="msg3"></p>
+                    <p class="typing-text highlight-text" id="msg4"></p>
+                </div>
+
+                <div class="final-words">
+                    <p class="typing-text" id="final"></p>
+                </div>
+
+                <div class="sparkles">✨✨✨</div>
+            </div>
+
+            <button class="replay-btn" id="replayBtn" onclick="replayMessage()">
+                🔄 Replay Message
+            </button>
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+<script>
+    function playMessage() {
+        document.querySelectorAll('.typing-text').forEach(el => el.textContent = '');
+
+        typeText('pageTitle', 'A Special Message Just For You', 80, () => {
+            typeText('mainMsg', 'You Are My Everything', 90, () => {
+                typeText('msg1', 'Today, 15 Nov 2025, marks another year of our journey. You gave me love, laughter, growth, and memories I value.', 40, () => {
+                    typeText('msg2', 'You brought light into my life. Your presence makes my days better. Noma unequnga nje😭', 40, () => {
+                        typeText('msg3', 'Thank you for choosing me. Thank you for loving me. Thank you for standing with me. You are my partner, my best friend, my home, my wife to be😂.', 40, () => {
+                            typeText('msg4', 'I will love you more each day. I will cherish our moments. I will build a future with you.', 40, () => {
+                                typeText('final', 'Happy Anniversary, my love. To us, to our love, to forever. I love you.', 50);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+    function replayMessage() {
+        playMessage();
+    }
+
+    playMessage();
+</script>
+<footer>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px;">
+            &copy; 2025 By AS Mbokazi.
+        </p>
+    </footer>
+</body>
+</html>

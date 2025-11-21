@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back Home</a>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1 class="typing-text" id="pageTitle"></h1>
+        </div>
+
+        <div class="memories-container">
+            <div class="memory-item" onclick="showMemory(0)">
+                <div class="memory-icon">💑</div>
+                <h3>First Date</h3>
+                <div class="memory-detail" id="memory0">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+
+            <div class="memory-item" onclick="showMemory(1)">
+                <div class="memory-icon">💋</div>
+                <h3>First Kiss</h3>
+                <div class="memory-detail" id="memory1">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+
+            <div class="memory-item" onclick="showMemory(2)">
+                <div class="memory-icon">🌍</div>
+                <h3>Adventures</h3>
+                <div class="memory-detail" id="memory2">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+
+            <div class="memory-item" onclick="showMemory(3)">
+                <div class="memory-icon">🏠</div>
+                <h3>Quiet Moments</h3>
+                <div class="memory-detail" id="memory3">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+
+            <div class="memory-item" onclick="showMemory(4)">
+                <div class="memory-icon">😂</div>
+                <h3>Funny Times</h3>
+                <div class="memory-detail" id="memory4">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+
+            <div class="memory-item" onclick="showMemory(5)">
+                <div class="memory-icon">💪</div>
+                <h3>Challenges</h3>
+                <div class="memory-detail" id="memory5">
+                    <p class="typing-content"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="memory-image-display">
+            <img src="images/pic2.jpg" alt="Our Memories" class="float-animation">
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+    <script>
+        const memories = [
+            "14 Feb 2025 - Uvalo Jesu kwazise ngangisakusaba lapho😭",
+            "14 Feb 2025 - Uvalo Jesu like ngangithi ngsaFloppa but ke azange😂",
+            "Loading....",
+            "Eii maningi impela but ngzofaka le eyaShabangu, nami angsazi lesibindi ngasithathaphi😂",
+            "I love the fact that each and every moment esiyitholayo siyahleka ndawonye.",
+            "Through every challenge we've faced, our love has only grown stronger. I'm so grateful to have you by my side, supporting me and loving me unconditionally even though uma sixabana uqinisa ikhanda. Together, we can overcome anything life throws our way.❤️"
+        ];
+
+        let currentMemory = null;
+
+        function showMemory(index) {
+            const memoryDetail = document.getElementById(`memory${index}`);
+            const typingElement = memoryDetail.querySelector('.typing-content');
+            
+            // Close all other memories
+            document.querySelectorAll('.memory-detail').forEach((detail, i) => {
+                if (i !== index) {
+                    detail.classList.remove('show');
+                }
+            });
+
+            // Toggle current memory
+            if (memoryDetail.classList.contains('show')) {
+                memoryDetail.classList.remove('show');
+                currentMemory = null;
+            } else {
+                memoryDetail.classList.add('show');
+                // Type the text
+                typeText(typingElement, memories[index], 30);
+                currentMemory = index;
+            }
+        }
+
+        // Type the page title
+        typeText('pageTitle', 'Our Beautiful Memories', 100);
+    </script>
+    <footer>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px;">
+            &copy; 2025 By AS Mbokazi.
+        </p>
+    </footer>
+</body>
+</html>

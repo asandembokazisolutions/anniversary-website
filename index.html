@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="typing-text" id="mainTitle"></h1>
+            <h2 class="subtitle fade-in">MaHlanguza🥺</h2>
+        </div>
+
+        <div class="content-wrapper">
+            <p class="intro-text fade-in-delay">
+                Click on any section below to explore our journey together...
+            </p>
+
+            <div class="menu-grid">
+                <!-- Memory Card -->
+                <div class="menu-card" onclick="navigateTo('memories.html')">
+                    <div class="card-icon">📖</div>
+                    <h3>Our Memories</h3>
+                    <p>Special moments we've shared</p>
+                    <div class="card-overlay">
+                        <span class="click-text">Click to explore →</span>
+                    </div>
+                </div>
+
+                <!-- Love Letter Card -->
+                <div class="menu-card" onclick="navigateTo('letter.html')">
+                    <div class="card-icon">💌</div>
+                    <h3>Love Letter</h3>
+                    <p>A message from my heart</p>
+                    <div class="card-overlay">
+                        <span class="click-text">Click to open →</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Card -->
+                <div class="menu-card" onclick="navigateTo('gallery.html')">
+                    <div class="card-icon">📷</div>
+                    <h3>Our Gallery</h3>
+                    <p>Pictures of us together</p>
+                    <div class="card-overlay">
+                        <span class="click-text">Click to view →</span>
+                    </div>
+                </div>
+
+                <!-- Hearts Card -->
+                <div class="menu-card" onclick="navigateTo('hearts.html')">
+                    <div class="card-icon">❤️</div>
+                    <h3>My Heart</h3>
+                    <p>Beats only for you</p>
+                    <div class="card-overlay">
+                        <span class="click-text">Click to feel →</span>
+                    </div>
+                </div>
+                <!-- Special Message Card -->
+                <div class="menu-card special-card" onclick="navigateTo('message.html')">
+                    <div class="card-icon">✨</div>
+                    <h3>Special Message</h3>
+                    <p>Something just for you</p>
+                    <div class="card-overlay">
+                        <span class="click-text">Click to read →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-message fade-in-delay-2">
+                <p>Made with endless love ❤️</p>
+                <p class="date">Anniversary 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+    <script>
+        function navigateTo(page) {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = page;
+            }, 300);
+        }
+
+        // Type the main title
+        const title = "Happy Anniversary";
+        typeText('mainTitle', title, 100);
+    </script>
+    <footer>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px;">
+            &copy; 2025 By AS Mbokazi.
+        </p>
+    </footer>
+</body>
+</html>

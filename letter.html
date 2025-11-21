@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back Home</a>
+    
+    <div class="container letter-page">
+        <div class="page-header">
+            <h1>A Letter For You</h1>
+        </div>
+
+        <div class="envelope-wrapper" id="envelopeWrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <img src="images/love-envelope-FFZ2s.png" alt="Envelope" class="envelope-img">
+                </div>
+                <div class="seal">❤️</div>
+            </div>
+            <button class="open-letter-btn" id="openBtn">Click to Open</button>
+        </div>
+
+        <div class="letter-content" id="letterContent">
+            <div class="letter-paper">
+                <div class="letter-header">
+                    <p class="typing-text" id="letterGreeting"></p>
+                </div>
+                
+                <div class="letter-body">
+                    <p class="typing-text paragraph" id="para1"></p>
+                    <p class="typing-text paragraph" id="para2"></p>
+                    <p class="typing-text paragraph" id="para3"></p>
+                    <p class="typing-text paragraph" id="para4"></p>
+                </div>
+
+                <div class="letter-signature">
+                    <p class="typing-text" id="closing"></p>
+                    <p class="typing-text signature-name" id="signature"></p>
+                </div>
+
+                <button class="close-letter-btn" onclick="closeLetter()">Close Letter</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+    <script>
+        const letterText = {
+            greeting: "MaHlanguza,",
+            para1: "As I sit down to write this letter, my heart overflows with emotions that words can barely capture. You are the most precious gift life has ever given me, and every day with you is a blessing I cherish deeply.",
+            para2: "You are my sunshine on the cloudiest days, my strength when I feel weak, and I love the fact that you support me in evvery situation like kuningi engingakusho about us.",
+            para3: "Thank you for being you – for your kindness, your patience, your unwavering support, and most of all, for your love. You've made me a better person simply by being in my life. Every moment we've shared, every memory we've created, is a treasure I hold close to my heart.",
+            para4: "I promise to love you today, tomorrow, and for all the days that follow. To stand by your side through every joy and challenge. To make you smile, to hold you close, and to remind you every single day how incredibly special you are to me.🥺",
+            closing: "Forever and always yours,",
+            signature: "Donda❤️"
+        };
+
+        let letterOpen = false;
+
+        document.getElementById('openBtn').addEventListener('click', openLetter);
+
+        function openLetter() {
+            if (letterOpen) return;
+            
+            letterOpen = true;
+            const envelope = document.getElementById('envelope');
+            const envelopeWrapper = document.getElementById('envelopeWrapper');
+            const letterContent = document.getElementById('letterContent');
+            const openBtn = document.getElementById('openBtn');
+
+            // Animate envelope opening
+            envelope.classList.add('open');
+            openBtn.style.display = 'none';
+
+            // Show letter after envelope animation
+            setTimeout(() => {
+                envelopeWrapper.style.display = 'none';
+                letterContent.classList.add('show');
+                
+                // Type each section with delays
+                typeText('letterGreeting', letterText.greeting, 50, () => {
+                    setTimeout(() => {
+                        typeText('para1', letterText.para1, 30, () => {
+                            setTimeout(() => {
+                                typeText('para2', letterText.para2, 30, () => {
+                                    setTimeout(() => {
+                                        typeText('para3', letterText.para3, 30, () => {
+                                            setTimeout(() => {
+                                                typeText('para4', letterText.para4, 30, () => {
+                                                    setTimeout(() => {
+                                                        typeText('closing', letterText.closing, 50, () => {
+                                                            setTimeout(() => {
+                                                                typeText('signature', letterText.signature, 80);
+                                                            }, 300);
+                                                        });
+                                                    }, 500);
+                                                });
+                                            }, 500);
+                                        });
+                                    }, 500);
+                                });
+                            }, 500);
+                        });
+                    }, 800);
+                });
+            }, 1500);
+        }
+
+        function closeLetter() {
+            const letterContent = document.getElementById('letterContent');
+            const envelopeWrapper = document.getElementById('envelopeWrapper');
+            const envelope = document.getElementById('envelope');
+            const openBtn = document.getElementById('openBtn');
+
+            letterContent.classList.remove('show');
+            
+            setTimeout(() => {
+                envelopeWrapper.style.display = 'flex';
+                envelope.classList.remove('open');
+                openBtn.style.display = 'block';
+                letterOpen = false;
+
+                // Clear all typed text
+                document.querySelectorAll('.typing-text').forEach(el => {
+                    el.textContent = '';
+                });
+            }, 300);
+        }
+    </script>
+    <footer>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px;">
+            &copy; 2025 By AS Mbokazi.
+        </p>
+    </footer>
+</body>
+</html>

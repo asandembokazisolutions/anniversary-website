@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back Home</a>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1 class="typing-text" id="pageTitle"></h1>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card" onclick="openImage(0)">
+                <img src="images/pic1.jpg" alt="Beautiful Moments">
+                <div class="gallery-overlay">
+                    <h3>Sunset Together</h3>
+                    <p>Click to view</p>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openImage(1)">
+                <img src="images/pic2.jpg" alt="Our Love">
+                <div class="gallery-overlay">
+                    <h3>Our Love</h3>
+                    <p>Click to view</p>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openImage(2)">
+                <img src="images/pic3.jpg" alt="Cherished Memories">
+                <div class="gallery-overlay">
+                    <h3>Precious Memories</h3>
+                    <p>Click to view</p>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openImage(3)">
+                <img src="images/pic4.jpg" alt="Love Letters">
+                <div class="gallery-overlay">
+                    <h3>Love Letters</h3>
+                    <p>Click to view</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" onclick="closeImage()">&times;</span>
+        <button class="modal-nav prev" onclick="changeImage(-1)">❮</button>
+        <button class="modal-nav next" onclick="changeImage(1)">❯</button>
+        <img src="" alt="Gallery Image" id="modalImage">
+        <div class="modal-caption">
+            <h2 id="modalTitle"></h2>
+            <p class="typing-text" id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+    <script>
+        const images = [
+            {
+                src: "images/pic1.jpg",
+                title: "Esigamekweni😂",
+                description: "Lana ke lisuke selime mpo ngingazi ukuthi ngenzeni😭"
+            },
+            {
+                src: "images/pic2.jpg",
+                title: "My Love❤️",
+                description: "Kodwa uyabona ukuthi uthando lwami ngawe alunamibandela. Ngiyakuthanda nje ngokungapheli."
+            },
+            {
+                src: "images/pic3.jpg",
+                title: "Phekwalo😂 iLontuza",
+                description: "Eii ngoba uyalithanda iPipi😭"
+            },
+            {
+                src: "images/pic4.jpg",
+                title: "My Baby💌",
+                description: "A defination of intombi enhle. Each letter, each word, is a testament to my love for you, written from the depths of my heart."
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function openImage(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            modal.style.display = 'flex';
+            modalImage.src = images[index].src;
+            modalTitle.textContent = images[index].title;
+            
+            // Clear previous text and type new description
+            modalDescription.textContent = '';
+            typeText(modalDescription, images[index].description, 30);
+        }
+
+        function closeImage() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= images.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+            
+            openImage(currentImageIndex);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImage();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'flex') {
+                if (e.key === 'Escape') closeImage();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
+        // Type the page title
+        typeText('pageTitle', 'Our Beautiful Gallery', 100);
+    </script>
+    <footer>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px;">
+            &copy; 2025 By AS Mbokazi.
+        </p>
+    </footer>
+</body>
+</html>
